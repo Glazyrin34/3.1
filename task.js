@@ -38,7 +38,7 @@ class Triangle {
 
     getArea() {
         let halfPerimeter = this.getPerimeter() / 2;
-        return String(Math.sqrt(halfPerimeter * (halfPerimeter - this.a) * (halfPerimeter - this.b) * (halfPerimeter - this.c)).toFixed(3));
+        return Number(Math.sqrt(halfPerimeter * (halfPerimeter - this.a) * (halfPerimeter - this.b) * (halfPerimeter - this.c)).toFixed(3));
     }
 }
 
@@ -46,10 +46,9 @@ function getTriangle(aSide, bSide, cSide) {
     
     
     try {
-        const triangle = new Triangle(aSide, bSide, cSide);
-        return triangle;
+        return new Triangle(aSide, bSide, cSide);
     } catch (error) {
-        const noTriangle = {
+        return  new Object({
             getPerimeter() {
                 return "Ошибка! Такой треугольник не существует";
             },
@@ -57,11 +56,10 @@ function getTriangle(aSide, bSide, cSide) {
             getArea() {
                 return "Ошибка! Такой треугольник не существует";
             }
-        }
-        return noTriangle.getArea(), noTriangle.getPerimeter();
+        });
     }
 }
 
-console.log(getTriangle(5, 10, 4));
+console.log(getTriangle(1, 10, 3));
 
 
